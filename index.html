@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>初配信、教えてください｜こつめいと</title>
+<meta name="description" content="IRIAMの初配信をまとめています。初配信がきまったら教えてください。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+/* ============================================================
+   ここだけ書き換えれば見た目が変わります
+   ICON : 画像URLを入れると画像に、空("")なら下のEMOJIを使います
+   EMOJI: 画像を使わないときの絵文字
+   ============================================================ */
+const ICON  = "https://hgbtzdhnjyiagbgyizft.supabase.co/storage/v1/object/public/Icon1/IMG_6155.png";
+const EMOJI = "🦦";
+</script>
+<style>
+:root{
+  --water:#bfe6f5; --water-deep:#7cc3e0; --cream:#fff9ec;
+  --otter:#7a5c42; --paw:#e9a6a1; --paw-dark:#d18d88;
+  --bubble:rgba(255,255,255,.55);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; color:var(--otter); line-height:1.9;
+  font-family:"Zen Maru Gothic",system-ui,sans-serif;
+  background-color:var(--water);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(124,195,224,.55) 0 22px, transparent 22px 96px),
+    repeating-linear-gradient(0deg, rgba(124,195,224,.55) 0 22px, transparent 22px 96px);
+}
+.wrap{max-width:560px;margin:0 auto;padding:28px 18px 64px;position:relative;z-index:1}
+.bubbles{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bubbles i{position:absolute;border-radius:50%;background:var(--bubble);
+  box-shadow:inset -2px -3px 0 rgba(255,255,255,.8)}
+.b1{width:14px;height:14px;left:6%;top:18%}
+.b2{width:9px;height:9px;left:88%;top:26%}
+.b3{width:20px;height:20px;left:80%;top:66%}
+.b4{width:11px;height:11px;left:12%;top:74%}
+.b5{width:7px;height:7px;left:52%;top:8%}
+
+.card{background:var(--cream);border-radius:28px;padding:26px 22px;margin:0 0 18px;
+  box-shadow:0 2px 0 rgba(122,92,66,.10)}
+.hero{padding:34px 22px 28px;text-align:center}
+.otter{font-size:52px;line-height:1;display:block;margin-bottom:6px}
+.otter img{width:92px;height:92px;border-radius:50%;object-fit:cover;display:block;
+  margin:0 auto 4px;border:3px solid #fff;box-shadow:0 2px 0 rgba(122,92,66,.12)}
+.done .otter img{width:104px;height:104px}
+h1{font-size:27px;font-weight:700;margin:0 0 12px}
+.lede{margin:0;font-size:15px}
+.who{margin:16px 0 0;font-size:13px;opacity:.75}
+h2{font-size:19px;font-weight:700;margin:0 0 14px}
+p{margin:0 0 12px;font-size:15px}
+.small{font-size:13px;opacity:.8}
+
+ul.good{list-style:none;margin:0;padding:0}
+ul.good li{display:flex;gap:11px;align-items:flex-start;margin-bottom:13px;font-size:15px}
+ul.good li:last-child{margin-bottom:0}
+ul.good span{flex:none;font-size:19px;line-height:1.5}
+
+label{display:block;font-size:14px;font-weight:500;margin:0 0 6px}
+.req{color:var(--paw);font-size:12px;margin-left:5px}
+input,textarea,select{
+  width:100%;font-family:inherit;font-size:16px;color:var(--otter);
+  background:#fff;border:2px solid rgba(124,195,224,.55);border-radius:14px;
+  padding:11px 13px;outline:none;-webkit-appearance:none;appearance:none}
+input:focus,textarea:focus,select:focus{border-color:var(--water-deep)}
+select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%237a5c42' stroke-width='2' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.field{margin-bottom:17px}
+.note{font-size:12px;opacity:.7;margin:5px 0 0}
+.two{display:flex;gap:12px}
+.two .field{flex:1;margin-bottom:0}
+.count{font-size:12px;opacity:.6;text-align:right;margin:4px 0 0}
+
+button{
+  display:block;width:100%;font-family:inherit;font-weight:700;font-size:16.5px;
+  color:#fff;background:var(--paw);border:0;border-radius:999px;padding:15px;
+  margin-top:22px;box-shadow:0 3px 0 var(--paw-dark);cursor:pointer}
+button:active{transform:translateY(2px);box-shadow:0 1px 0 var(--paw-dark)}
+button:disabled{opacity:.5;cursor:default}
+
+.msg{margin-top:16px;padding:13px 15px;border-radius:16px;font-size:14px;display:none}
+.msg.ok{display:block;background:#eaf6ea;color:#3f6b45}
+.msg.err{display:block;background:#fdeceb;color:#a5544f}
+
+ul.rules{margin:0;padding-left:1.1em;font-size:14px}
+ul.rules li{margin-bottom:9px}
+ul.rules li:last-child{margin-bottom:0}
+footer{text-align:center;font-size:13px;padding:6px 0 0}
+footer a{color:var(--otter);font-weight:700}
+.done{display:none;text-align:center}
+.done .otter{font-size:60px}
+@media(max-width:380px){ h1{font-size:24px} }
+</style>
+</head>
+<body>
+
+<div class="bubbles" aria-hidden="true">
+  <i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><i class="b5"></i>
+</div>
+
+<div class="wrap">
+
+  <div class="card hero">
+    <span class="otter">🦦</span>
+    <h1>初配信、教えてください</h1>
+    <p class="lede">毎朝、その日に初配信するIRIAMのVライバーさんを<br>まとめて紹介しています。</p>
+    <p class="who">こつめいと（@kotsumeit）／IRIAMを見てるリスナーです</p>
+  </div>
+
+  <div class="card">
+    <h2>教えてくれるとこうなります</h2>
+    <ul class="good">
+      <li><span>🗓️</span><div>初配信の日の朝、カレンダーに載ります。時間つきで。</div></li>
+      <li><span>🫧</span><div>前の日の夜に、ひとことつきで個別に紹介します。</div></li>
+      <li><span>🐾</span><div>行ける枠にはこつめが遊びに行きます。全部は無理だけど。</div></li>
+    </ul>
+  </div>
+
+  <div class="card" id="formCard">
+    <h2>書いてもらうこと</h2>
+    <p class="small">1分くらいで終わります。わかる範囲で大丈夫です。</p>
+
+    <form id="f" novalidate>
+      <div class="field">
+        <label for="name">お名前<span class="req">必須</span></label>
+        <input id="name" type="text" maxlength="40" required placeholder="こつめいと">
+        <p class="note">紹介に載せるお名前です（2〜40文字）</p>
+      </div>
+
+      <div class="field">
+        <label for="xid">Xのアカウント<span class="req">必須</span></label>
+        <input id="xid" type="text" maxlength="16" required placeholder="@kotsumeit"
+               autocapitalize="off" autocorrect="off" spellcheck="false">
+        <p class="note">半角英数と _ だけ。@はあってもなくても大丈夫です</p>
+      </div>
+
+      <div class="field">
+        <label for="date">初配信の日<span class="req">必須</span></label>
+        <input id="date" type="date" required>
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label for="t1sel">1枠目の時間</label>
+          <select id="t1sel"></select>
+          <input id="t1free" type="text" placeholder="例 19:45" maxlength="5"
+                 inputmode="numeric" style="display:none;margin-top:8px">
+        </div>
+        <div class="field">
+          <label for="t2sel">2枠目（あれば）</label>
+          <select id="t2sel"></select>
+          <input id="t2free" type="text" placeholder="例 22:15" maxlength="5"
+                 inputmode="numeric" style="display:none;margin-top:8px">
+        </div>
+      </div>
+      <p class="note" style="margin-top:6px">15分きざみにない時間は「その他」を選んで入力してください</p>
+
+      <div class="field" style="margin-top:17px">
+        <label for="intro">ひとこと</label>
+        <textarea id="intro" rows="3" maxlength="100"
+                  placeholder="まったり雑談します。初見さん大歓迎です🫧"></textarea>
+        <p class="count"><span id="c">0</span>/100</p>
+        <p class="note">そのまま紹介に載せます。枠の雰囲気や好きなことなど</p>
+      </div>
+
+      <div class="field">
+        <label for="agency">事務所（あれば）</label>
+        <input id="agency" type="text" maxlength="40" placeholder="個人勢">
+      </div>
+
+      <button type="submit" id="btn">おくる</button>
+      <div class="msg" id="msg"></div>
+    </form>
+  </div>
+
+  <div class="card done" id="done">
+    <span class="otter">🦦</span>
+    <h2 style="text-align:center">ありがとうございます！</h2>
+    <p class="small" style="text-align:center">初配信の日、たのしみにしてます。<br>内容はこつめが確認してから載せますね。</p>
+    <p class="small" style="text-align:center;margin-top:10px">書き間違えたときは、同じ内容をもう一度おくってもらえれば<br>新しい方で上書きします（1日3回まで）</p>
+    <p class="small" style="text-align:center;margin-top:14px">
+      日にちが変わったときは <a href="https://x.com/kotsumeit">@kotsumeit</a> まで教えてください🫧
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>先に伝えておきたいこと</h2>
+    <ul class="rules">
+      <li>IRIAMの初配信だけまとめています。他のアプリはごめんなさい。</li>
+      <li>載せないでほしくなったら、いつでも一言ください。すぐ外します。</li>
+      <li>教えてもらえなくても、見つけられたら勝手に載せています。</li>
+      <li>日にちが変わったときも、よかったら教えてください。</li>
+    </ul>
+  </div>
+
+  <footer><p>🦦 <a href="https://x.com/kotsumeit">@kotsumeit</a></p></footer>
+</div>
+
+<script>
+const SUPABASE_URL = "https://hgbtzdhnjyiagbgyizft.supabase.co";
+const SUPABASE_KEY = "sb_publishable_fwBHhtDct9Klrz8FneqNdw_ck9pFLRi";
+
+const $ = id => document.getElementById(id);
+const msg = $("msg"), btn = $("btn");
+
+/* アイコン：ICONがあれば画像、なければ絵文字 */
+document.querySelectorAll(".otter").forEach(el => {
+  el.innerHTML = ICON ? '<img src="' + ICON + '" alt="こつめいと">' : EMOJI;
+});
+
+/* 時間のプルダウン（15分きざみ）＋「その他」 */
+function buildTimes(sel, free){
+  const s = $(sel), f = $(free);
+  s.innerHTML = "";
+  s.appendChild(new Option("選んでください", ""));
+  for (let h = 0; h < 24; h++){
+    for (const m of ["00","15","30","45"]){
+      const v = h + ":" + m;
+      s.appendChild(new Option(String(h).padStart(2,"0") + ":" + m, v));
+    }
+  }
+  s.appendChild(new Option("その他（自分で入力）", "other"));
+  s.addEventListener("change", () => {
+    const other = s.value === "other";
+    f.style.display = other ? "block" : "none";
+    if (other) f.focus(); else f.value = "";
+  });
+  f.addEventListener("input", () => {
+    f.value = f.value.replace(/[^0-9:：]/g, "").replace("：", ":");
+  });
+}
+buildTimes("t1sel","t1free");
+buildTimes("t2sel","t2free");
+
+/* 選択中の時間を取り出す。形式が変なら null を返す */
+function readTime(sel, free){
+  const v = $(sel).value;
+  if (!v) return { ok:true, value:null };
+  if (v !== "other") return { ok:true, value:v };
+  const t = $(free).value.trim();
+  if (!t) return { ok:true, value:null };
+  const m = t.match(/^(\d{1,2}):(\d{2})$/);
+  if (!m || +m[1] > 23 || +m[2] > 59) return { ok:false, value:null };
+  return { ok:true, value:(+m[1]) + ":" + m[2] };
+}
+
+$("intro").addEventListener("input", e => { $("c").textContent = e.target.value.length; });
+
+const pad = n => String(n).padStart(2, "0");
+const ymd = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+const today = new Date();
+$("date").min = ymd(today);
+const max = new Date(today); max.setMonth(max.getMonth() + 18);
+$("date").max = ymd(max);
+
+function show(kind, text){ msg.className = "msg " + kind; msg.textContent = text; }
+
+$("f").addEventListener("submit", async e => {
+  e.preventDefault();
+  msg.className = "msg";
+
+  const name  = $("name").value.trim();
+  const xid   = $("xid").value.trim().replace(/^@/, "");
+  const date  = $("date").value;
+  const r1 = readTime("t1sel","t1free"), r2 = readTime("t2sel","t2free");
+  if (!r1.ok || !r2.ok) return show("err", "時間は 19:45 のような形で入れてください");
+  const t1 = r1.value, t2 = r2.value;
+  const intro = $("intro").value.trim(), agency = $("agency").value.trim();
+
+  if (name.length < 2) return show("err", "お名前は2文字以上でお願いします");
+  if (!/^[A-Za-z0-9_]{1,15}$/.test(xid)) return show("err", "Xのアカウントは半角英数と _ だけで入力してください");
+  if (!date) return show("err", "初配信の日を入れてください");
+
+  btn.disabled = true; btn.textContent = "おくっています…";
+
+  try {
+    const res = await fetch(SUPABASE_URL + "/rest/v1/debut_submissions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY,
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify({
+        display_name: name,
+        x_id: "@" + xid,
+        debut_date: date,
+        start_time1: t1,
+        start_time2: t2,
+        intro: intro || null,
+        agency: agency || null
+      })
+    });
+
+    if (res.ok) {
+      $("formCard").style.display = "none";
+      $("done").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const body = await res.text();
+    if (body.indexOf("訂正回数の上限") >= 0) {
+      show("err", "本日の送信回数の上限です。まだ直したいところがあれば @kotsumeit までお願いします");
+    } else if (body.indexOf("使用できない語") >= 0) {
+      show("err", "使えない言葉が入っているみたいです。書き直してもらえますか");
+    } else if (body.indexOf("過去") >= 0) {
+      show("err", "初配信の日が過去になっています");
+    } else if (body.indexOf("先すぎ") >= 0) {
+      show("err", "初配信の日が先すぎるみたいです");
+    } else if (body.indexOf("混み合") >= 0) {
+      show("err", "いま混み合っています。少し時間をおいてお試しください");
+    } else {
+      show("err", "うまく送れませんでした。時間をおいてもう一度お願いします");
+    }
+  } catch (err) {
+    show("err", "通信に失敗しました。電波のいいところでもう一度お願いします");
+  } finally {
+    btn.disabled = false; btn.textContent = "おくる";
+  }
+});
+</script>
+</body>
+</html>
