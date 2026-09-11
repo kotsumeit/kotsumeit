@@ -137,7 +137,7 @@ footer a{color:var(--otter);font-weight:700}
         <label for="xid">Xのアカウント<span class="req">必須</span></label>
         <input id="xid" type="text" maxlength="16" required placeholder="@kotsumeit"
                autocapitalize="off" autocorrect="off" spellcheck="false">
-        <p class="note">半角英数と _ だけ。@はあってもなくても大丈夫です</p>
+        <p class="note">@はあってもなくても、全角でも大丈夫です。URLを貼っても読み取ります</p>
       </div>
 
       <div class="field">
@@ -251,6 +251,7 @@ function readTime(sel, free){
 }
 
 $("intro").addEventListener("input", e => { $("c").textContent = e.target.value.length; });
+$("xid").addEventListener("blur", e => { e.target.value = normalizeId(e.target.value); });
 
 const pad = n => String(n).padStart(2, "0");
 const ymd = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
@@ -259,6 +260,19 @@ $("date").min = ymd(today);
 const max = new Date(today); max.setMonth(max.getMonth() + 18);
 $("date").max = ymd(max);
 
+
+/* @IDの表記ゆれを吸収する：全角→半角、@や＠、URL貼り付けにも対応 */
+function normalizeId(raw){
+  let v = String(raw);
+  // 全角英数字・記号を半角へ
+  v = v.replace(/[Ａ-Ｚａ-ｚ０-９＿]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0));
+  v = v.replace(/[＠]/g, "@").replace(/[　\s]/g, "");
+  // URLを貼られた場合は末尾のIDだけ取り出す
+  v = v.replace(/^https?:\/\/(mobile\.)?(x|twitter)\.com\//i, "");
+  v = v.split(/[?#/]/)[0];
+  return v.replace(/^@+/, "");
+}
+
 function show(kind, text){ msg.className = "msg " + kind; msg.textContent = text; }
 
 $("f").addEventListener("submit", async e => {
@@ -266,7 +280,7 @@ $("f").addEventListener("submit", async e => {
   msg.className = "msg";
 
   const name  = $("name").value.trim();
-  const xid   = $("xid").value.trim().replace(/^@/, "");
+  const xid   = normalizeId($("xid").value);
   const date  = $("date").value;
   const r1 = readTime("t1sel","t1free"), r2 = readTime("t2sel","t2free");
   if (!r1.ok || !r2.ok) return show("err", "時間は 19:45 のような形で入れてください");
@@ -274,7 +288,7 @@ $("f").addEventListener("submit", async e => {
   const intro = $("intro").value.trim(), agency = $("agency").value.trim();
 
   if (name.length < 2) return show("err", "お名前は2文字以上でお願いします");
-  if (!/^[A-Za-z0-9_]{1,15}$/.test(xid)) return show("err", "Xのアカウントは半角英数と _ だけで入力してください");
+  if (!/^[A-Za-z0-9_]{1,15}$/.test(xid)) return show("err", "Xのアカウントが読み取れませんでした。@のあとの英数字（例 kotsumeit）を入れてみてください");
   if (!date) return show("err", "初配信の日を入れてください");
 
   btn.disabled = true; btn.textContent = "おくっています…";
