@@ -3,20 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>初配信、教えてください｜こつめいと</title>
-<meta name="description" content="IRIAMの初配信をまとめています。初配信がきまったら教えてください。">
+<title>初配信・イベントを教えてほしいのです｜こつめ</title>
+<meta name="description" content="IRIAMの初配信とイベントをまとめているのです。きまったら教えて欲しいのですよ。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
 <script>
 /* ============================================================
    ここだけ書き換えれば見た目が変わります
-   ICON : 画像URLを入れると画像に、空("")なら下のEMOJIを使います
-   EMOJI: 画像を使わないときの絵文字
+   ICON : 画像URL（空にすると下のEMOJIを使います）
    ============================================================ */
 const ICON  = "https://hgbtzdhnjyiagbgyizft.supabase.co/storage/v1/object/public/Icon1/IMG_6155.png";
 const EMOJI = "🦦";
 </script>
+
 <style>
 :root{
   --water:#bfe6f5; --water-deep:#7cc3e0; --cream:#fff9ec;
@@ -42,6 +43,7 @@ body{
 .b3{width:20px;height:20px;left:80%;top:66%}
 .b4{width:11px;height:11px;left:12%;top:74%}
 .b5{width:7px;height:7px;left:52%;top:8%}
+.b6{width:16px;height:16px;left:30%;top:88%}
 
 .card{background:var(--cream);border-radius:28px;padding:26px 22px;margin:0 0 18px;
   box-shadow:0 2px 0 rgba(122,92,66,.10)}
@@ -49,9 +51,9 @@ body{
 .otter{font-size:52px;line-height:1;display:block;margin-bottom:6px}
 .otter img{width:92px;height:92px;border-radius:50%;object-fit:cover;display:block;
   margin:0 auto 4px;border:3px solid #fff;box-shadow:0 2px 0 rgba(122,92,66,.12)}
-.done .otter img{width:104px;height:104px}
 h1{font-size:27px;font-weight:700;margin:0 0 12px}
 .lede{margin:0;font-size:15px}
+.sub{font-size:13.5px;opacity:.8}
 .who{margin:16px 0 0;font-size:13px;opacity:.75}
 h2{font-size:19px;font-weight:700;margin:0 0 14px}
 p{margin:0 0 12px;font-size:15px}
@@ -71,11 +73,20 @@ input,textarea,select{
 input:focus,textarea:focus,select:focus{border-color:var(--water-deep)}
 select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%237a5c42' stroke-width='2' stroke-linecap='round'/></svg>");
   background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+textarea{line-height:1.8;resize:vertical}
 .field{margin-bottom:17px}
 .note{font-size:12px;opacity:.7;margin:5px 0 0}
 .two{display:flex;gap:12px}
 .two .field{flex:1;margin-bottom:0}
 .count{font-size:12px;opacity:.6;text-align:right;margin:4px 0 0}
+
+.kinds{display:flex;gap:10px}
+.kind{flex:1;margin:0;cursor:pointer}
+.kind input{position:absolute;opacity:0;width:0;height:0}
+.kind span{display:block;text-align:center;font-size:15px;font-weight:500;padding:12px;
+  background:#fff;border:2px solid rgba(124,195,224,.55);border-radius:14px}
+.kind input:checked + span{background:var(--paw);color:#fff;border-color:var(--paw)}
+.kind input:focus-visible + span{outline:2px solid var(--water-deep);outline-offset:2px}
 
 button{
   display:block;width:100%;font-family:inherit;font-weight:700;font-size:16.5px;
@@ -94,112 +105,171 @@ ul.rules li:last-child{margin-bottom:0}
 footer{text-align:center;font-size:13px;padding:6px 0 0}
 footer a{color:var(--otter);font-weight:700}
 .done{display:none;text-align:center}
-.done .otter{font-size:60px}
+.done .otter img{width:104px;height:104px}
+
+/* ---- PC：左に説明、右にフォームの2カラム ---- */
+@media(min-width:900px){
+  .wrap{max-width:1000px;padding:44px 28px 72px;
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+    gap:26px;align-items:start}
+  .colL{position:sticky;top:44px}
+  .colL .card:last-child{margin-bottom:0}
+  .colR .card:last-child{margin-bottom:0}
+  .hero{text-align:left;padding:34px 30px 30px}
+  .hero .otter img{margin:0 0 10px}
+  .otter{text-align:left}
+  h1{font-size:31px}
+  .card{padding:28px 30px}
+  footer{grid-column:1 / -1;padding-top:20px}
+  .b3{left:52%}
+}
 @media(max-width:380px){ h1{font-size:24px} }
 </style>
 </head>
 <body>
 
 <div class="bubbles" aria-hidden="true">
-  <i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><i class="b5"></i>
+  <i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><i class="b5"></i><i class="b6"></i>
 </div>
 
 <div class="wrap">
 
-  <div class="card hero">
-    <span class="otter">🦦</span>
-    <h1>初配信、教えてください</h1>
-    <p class="lede">毎朝、その日に初配信するIRIAMのVライバーさんを<br>まとめて紹介しています。</p>
-    <p class="who">こつめいと（@kotsumeit）／IRIAMを見てるリスナーです</p>
+  <div class="colL">
+    <div class="card hero">
+      <span class="otter">🦦</span>
+      <h1>あなたの初配信・イベントを<br>教えて欲しいのです</h1>
+      <p class="lede">毎朝と夜に、その日もしくは翌日にデビューされる<br>
+        IRIAMライバー様をご紹介しているのです<br>
+        <span class="sub">イベントに参加される方も、週に1度まとめてご紹介しますよ🫧</span></p>
+      <p class="who">こつめ（@kotsumeit）／IRIAMを楽しむ純リスナーのカワウソ</p>
+    </div>
+
+    <div class="card">
+      <h2>教えてくださるとこうなりますよ</h2>
+      <ul class="good" id="goodDebut">
+        <li><span>🗓️</span><div>初配信の日の朝、時間つきでカレンダーに掲載させていただきますよ</div></li>
+        <li><span>🫧</span><div>デビュー前夜に、ひとことつきで個別に紹介しますよ</div></li>
+        <li><span>🐾</span><div>お時間が合えば枠にこつめが遊びに行きますよ</div></li>
+      </ul>
+      <ul class="good" id="goodEvent" style="display:none">
+        <li><span>🗓️</span><div>その週の火曜の朝、まとめてご紹介しますよ</div></li>
+        <li><span>🫧</span><div>ひとことを書いていただけたら、そのまま掲載させていただきますよ</div></li>
+        <li><span>⏰</span><div>月曜までにいただいた分が対象とさせていただきます<br>途中参加の方はごめんなさいですよ</div></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>先に伝えておきたいこと</h2>
+      <p class="small" style="background:#fff;border-radius:16px;padding:14px 16px;margin:0 0 15px">
+        教えていただいた内容は、カレンダーとご紹介に載せるためだけに使いますよ🫧<br>
+        こつめは皆さまの内容をAIの学習に使ったり、他には使わないのですよ
+      </p>
+      <ul class="rules">
+        <li>IRIAMのライバーさんだけまとめていますので他のアプリの方はごめんなさい</li>
+        <li>載せないでほしくなったら、いつでも一言ください！すぐ外しますね</li>
+        <li>教えてもらえなくても、見つけられたら勝手に載せていますよ！</li>
+        <li>日にちが変わったときも、よかったら教えていただけると助かります</li>
+        <li>イベントは週に1回、火曜の朝にまとめてご紹介しますね</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>教えてくれるとこうなります</h2>
-    <ul class="good">
-      <li><span>🗓️</span><div>初配信の日の朝、カレンダーに載ります。時間つきで。</div></li>
-      <li><span>🫧</span><div>前の日の夜に、ひとことつきで個別に紹介します。</div></li>
-      <li><span>🐾</span><div>行ける枠にはこつめが遊びに行きます。全部は無理だけど。</div></li>
-    </ul>
-  </div>
+  <div class="colR">
+    <div class="card" id="formCard">
+      <h2>書いてもらうこと</h2>
+      <p class="small">1分くらいで終わります。わかる範囲で大丈夫です。</p>
 
-  <div class="card" id="formCard">
-    <h2>書いてもらうこと</h2>
-    <p class="small">1分くらいで終わります。わかる範囲で大丈夫です。</p>
-
-    <form id="f" novalidate>
-      <div class="field">
-        <label for="name">お名前<span class="req">必須</span></label>
-        <input id="name" type="text" maxlength="40" required placeholder="こつめいと">
-        <p class="note">紹介に載せるお名前です（2〜40文字）</p>
-      </div>
-
-      <div class="field">
-        <label for="xid">Xのアカウント<span class="req">必須</span></label>
-        <input id="xid" type="text" maxlength="16" required placeholder="@kotsumeit"
-               autocapitalize="off" autocorrect="off" spellcheck="false">
-        <p class="note">@はあってもなくても、全角でも大丈夫です。URLを貼っても読み取ります</p>
-      </div>
-
-      <div class="field">
-        <label for="date">初配信の日<span class="req">必須</span></label>
-        <input id="date" type="date" required>
-      </div>
-
-      <div class="two">
+      <form id="f" novalidate>
         <div class="field">
-          <label for="t1sel">1枠目の時間</label>
-          <select id="t1sel"></select>
-          <input id="t1free" type="text" placeholder="例 19:45" maxlength="5"
-                 inputmode="numeric" style="display:none;margin-top:8px">
+          <label>どちらのお知らせですか<span class="req">必須</span></label>
+          <div class="kinds">
+            <label class="kind"><input type="radio" name="kind" value="初配信" checked><span>初配信</span></label>
+            <label class="kind"><input type="radio" name="kind" value="イベント"><span>イベント</span></label>
+          </div>
         </div>
+
         <div class="field">
-          <label for="t2sel">2枠目（あれば）</label>
-          <select id="t2sel"></select>
-          <input id="t2free" type="text" placeholder="例 22:15" maxlength="5"
-                 inputmode="numeric" style="display:none;margin-top:8px">
+          <label for="name">お名前<span class="req">必須</span></label>
+          <input id="name" type="text" maxlength="40" required placeholder="こつめいと">
+          <p class="note">紹介に載せるお名前です（2〜40文字）</p>
         </div>
-      </div>
-      <p class="note" style="margin-top:6px">15分きざみにない時間は「その他」を選んで入力してください</p>
 
-      <div class="field" style="margin-top:17px">
-        <label for="intro">ひとこと</label>
-        <textarea id="intro" rows="3" maxlength="100"
-                  placeholder="まったり雑談します。初見さん大歓迎です🫧"></textarea>
-        <p class="count"><span id="c">0</span>/100</p>
-        <p class="note">そのまま紹介に載せます。枠の雰囲気や好きなことなど</p>
-      </div>
+        <div class="field">
+          <label for="xid">Xのアカウント<span class="req">必須</span></label>
+          <input id="xid" type="text" maxlength="60" required placeholder="@kotsumeit"
+                 autocapitalize="off" autocorrect="off" spellcheck="false">
+          <p class="note">@はあってもなくても、全角でも大丈夫です。URLを貼っても読み取ります</p>
+        </div>
 
-      <div class="field">
-        <label for="agency">事務所（あれば）</label>
-        <input id="agency" type="text" maxlength="40" placeholder="個人勢">
-      </div>
+        <div class="field">
+          <label for="date" id="dateLabel">初配信の日<span class="req">必須</span></label>
+          <input id="date" type="date">
+          <p class="note" id="dateNote" style="display:none">その週の火曜〜月曜でまとめます。週のうちどの日でも大丈夫です</p>
+        </div>
 
-      <button type="submit" id="btn">おくる</button>
-      <div class="msg" id="msg"></div>
-    </form>
+        <div id="debutBlock">
+          <div class="two">
+            <div class="field">
+              <label for="t1sel">1枠目の時間</label>
+              <select id="t1sel"></select>
+              <input id="t1free" type="text" placeholder="例 19:45" maxlength="5"
+                     inputmode="numeric" style="display:none;margin-top:8px">
+            </div>
+            <div class="field">
+              <label for="t2sel">2枠目（あれば）</label>
+              <select id="t2sel"></select>
+              <input id="t2free" type="text" placeholder="例 22:15" maxlength="5"
+                     inputmode="numeric" style="display:none;margin-top:8px">
+            </div>
+          </div>
+          <p class="note" style="margin:6px 0 17px">15分きざみにない時間は「その他」を選んで入力してください</p>
+        </div>
+
+        <!-- イベントのとき -->
+        <div id="eventBlock" style="display:none">
+          <div class="field">
+            <label for="evsel">イベント<span class="req">必須</span></label>
+            <select id="evsel">
+              <option value="">選んでください</option>
+              <option value="バナーイベント">バナーイベント</option>
+              <option value="other">その他（自分で入力）</option>
+            </select>
+            <input id="evfree" type="text" maxlength="60" placeholder="イベント名"
+                   style="display:none;margin-top:8px">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="intro">ひとこと</label>
+          <textarea id="intro" rows="4" maxlength="140"></textarea>
+          <p class="count"><span id="c">0</span>/140</p>
+          <p class="note" id="introNote"></p>
+        </div>
+
+        <div class="field">
+          <label for="agency">事務所（あれば）</label>
+          <input id="agency" type="text" maxlength="40" placeholder="個人勢">
+        </div>
+
+        <button type="submit" id="btn">おくる</button>
+        <div class="msg" id="msg"></div>
+      </form>
+    </div>
+
+    <div class="card done" id="done">
+      <span class="otter">🦦</span>
+      <h2 style="text-align:center">ありがとうございます！</h2>
+      <p class="small" style="text-align:center">たのしみにしてますよ<br>内容はこつめが確認してから掲載させていただきますね</p>
+      <p class="small" style="text-align:center;margin-top:10px">書き間違えたときは、同じ内容をもう一度おくってもらえれば<br>新しい方で上書きしますよ（1日3回まで）</p>
+      <p class="small" style="text-align:center;margin-top:14px">
+        日にちが変わったときは <a href="https://x.com/kotsumeit">@kotsumeit</a> まで教えてください🫧</p>
+    </div>
   </div>
 
-  <div class="card done" id="done">
-    <span class="otter">🦦</span>
-    <h2 style="text-align:center">ありがとうございます！</h2>
-    <p class="small" style="text-align:center">初配信の日、たのしみにしてます。<br>内容はこつめが確認してから載せますね。</p>
-    <p class="small" style="text-align:center;margin-top:10px">書き間違えたときは、同じ内容をもう一度おくってもらえれば<br>新しい方で上書きします（1日3回まで）</p>
-    <p class="small" style="text-align:center;margin-top:14px">
-      日にちが変わったときは <a href="https://x.com/kotsumeit">@kotsumeit</a> まで教えてください🫧
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>先に伝えておきたいこと</h2>
-    <ul class="rules">
-      <li>IRIAMの初配信だけまとめています。他のアプリはごめんなさい。</li>
-      <li>載せないでほしくなったら、いつでも一言ください。すぐ外します。</li>
-      <li>教えてもらえなくても、見つけられたら勝手に載せています。</li>
-      <li>日にちが変わったときも、よかったら教えてください。</li>
-    </ul>
-  </div>
-
-  <footer><p>🦦 <a href="https://x.com/kotsumeit">@kotsumeit</a></p></footer>
+  <footer>
+    <p class="small" style="margin-bottom:6px">ページの感想やご意見は <a href="https://x.com/kotsumeit">@kotsumeit</a> までどうぞ🫧</p>
+    <p>🦦 <a href="https://x.com/kotsumeit">@kotsumeit</a></p>
+  </footer>
 </div>
 
 <script>
@@ -209,27 +279,27 @@ const SUPABASE_KEY = "sb_publishable_fwBHhtDct9Klrz8FneqNdw_ck9pFLRi";
 const $ = id => document.getElementById(id);
 const msg = $("msg"), btn = $("btn");
 
-/* アイコン：ICONがあれば画像、なければ絵文字 */
+/* アイコン */
 document.querySelectorAll(".otter").forEach(el => {
   el.innerHTML = ICON ? '<img src="' + ICON + '" alt="こつめいと">' : EMOJI;
 });
 
-/* 時間のプルダウン（15分きざみ）＋「その他」 */
-function buildTimes(sel, free){
-  const s = $(sel), f = $(free);
+const pad = n => String(n).padStart(2, "0");
+const ymd = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+
+/* 時間のプルダウン（15分きざみ）＋その他 */
+function buildTimes(selId, freeId){
+  const s = $(selId), f = $(freeId);
   s.innerHTML = "";
   s.appendChild(new Option("選んでください", ""));
-  for (let h = 0; h < 24; h++){
-    for (const m of ["00","15","30","45"]){
-      const v = h + ":" + m;
-      s.appendChild(new Option(String(h).padStart(2,"0") + ":" + m, v));
-    }
-  }
+  for (let h = 0; h < 24; h++)
+    for (const m of ["00","15","30","45"])
+      s.appendChild(new Option(pad(h) + ":" + m, h + ":" + m));
   s.appendChild(new Option("その他（自分で入力）", "other"));
   s.addEventListener("change", () => {
-    const other = s.value === "other";
-    f.style.display = other ? "block" : "none";
-    if (other) f.focus(); else f.value = "";
+    const o = s.value === "other";
+    f.style.display = o ? "block" : "none";
+    if (o) f.focus(); else f.value = "";
   });
   f.addEventListener("input", () => {
     f.value = f.value.replace(/[^0-9:：]/g, "").replace("：", ":");
@@ -238,40 +308,84 @@ function buildTimes(sel, free){
 buildTimes("t1sel","t1free");
 buildTimes("t2sel","t2free");
 
-/* 選択中の時間を取り出す。形式が変なら null を返す */
-function readTime(sel, free){
-  const v = $(sel).value;
+function readTime(selId, freeId){
+  const v = $(selId).value;
   if (!v) return { ok:true, value:null };
   if (v !== "other") return { ok:true, value:v };
-  const t = $(free).value.trim();
+  const t = $(freeId).value.trim();
   if (!t) return { ok:true, value:null };
   const m = t.match(/^(\d{1,2}):(\d{2})$/);
   if (!m || +m[1] > 23 || +m[2] > 59) return { ok:false, value:null };
   return { ok:true, value:(+m[1]) + ":" + m[2] };
 }
 
-$("intro").addEventListener("input", e => { $("c").textContent = e.target.value.length; });
-$("xid").addEventListener("blur", e => { e.target.value = normalizeId(e.target.value); });
+/* 選んだ日が属する週の火曜日を返す（IRIAMは火曜はじまり） */
+function tuesdayOf(dateStr){
+  const d = new Date(dateStr + "T00:00:00");
+  const dow = d.getDay();                      // 0=日 … 2=火
+  const back = (dow >= 2) ? dow - 2 : dow + 5;
+  d.setDate(d.getDate() - back);
+  return ymd(d);
+}
 
-const pad = n => String(n).padStart(2, "0");
-const ymd = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
-const today = new Date();
-$("date").min = ymd(today);
-const max = new Date(today); max.setMonth(max.getMonth() + 18);
-$("date").max = ymd(max);
+/* イベント名：その他を選んだら記入欄 */
+$("evsel").addEventListener("change", () => {
+  const o = $("evsel").value === "other";
+  $("evfree").style.display = o ? "block" : "none";
+  if (o) $("evfree").focus(); else $("evfree").value = "";
+});
+function readEventName(){
+  const v = $("evsel").value;
+  if (!v) return "";
+  return v === "other" ? $("evfree").value.trim() : v;
+}
 
-
-/* @IDの表記ゆれを吸収する：全角→半角、@や＠、URL貼り付けにも対応 */
+/* @IDの表記ゆれ吸収 */
 function normalizeId(raw){
   let v = String(raw);
-  // 全角英数字・記号を半角へ
   v = v.replace(/[Ａ-Ｚａ-ｚ０-９＿]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0));
   v = v.replace(/[＠]/g, "@").replace(/[　\s]/g, "");
-  // URLを貼られた場合は末尾のIDだけ取り出す
   v = v.replace(/^https?:\/\/(mobile\.)?(x|twitter)\.com\//i, "");
   v = v.split(/[?#/]/)[0];
   return v.replace(/^@+/, "");
 }
+
+/* 種別の切り替え */
+const HINT = {
+  "初配信":  "前口上やキャッチフレーズ、初見さんへのごあいさつなど。そのまま紹介に載せます",
+  "イベント":"意気込みや自分の長所、配信スタイルなど。そのまま紹介に載せます"
+};
+const PH = {
+  "初配信":  "はじめまして、こつめいとです🦦\nゆるっと雑談する枠です。初見さん大歓迎！",
+  "イベント":"上位めざしてがんばります！\n歌とゲームが好きな枠です🎤"
+};
+function currentKind(){
+  const el = document.querySelector('input[name="kind"]:checked');
+  return el ? el.value : "初配信";
+}
+function applyKind(){
+  const k  = currentKind();
+  const ev = (k === "イベント");
+  $("eventBlock").style.display = ev ? "block" : "none";
+  $("debutBlock").style.display = ev ? "none"  : "block";
+  $("dateLabel").innerHTML = (ev ? "イベントの日" : "初配信の日") + '<span class="req">必須</span>';
+  $("dateNote").style.display = ev ? "block" : "none";
+  $("goodEvent").style.display  = ev ? "block" : "none";
+  $("goodDebut").style.display  = ev ? "none"  : "block";
+  $("introNote").textContent    = HINT[k];
+  $("intro").placeholder        = PH[k];
+  msg.className = "msg";
+}
+document.querySelectorAll('input[name="kind"]').forEach(r => r.addEventListener("change", applyKind));
+applyKind();                                   // 読み込み時にも反映
+
+$("intro").addEventListener("input", e => { $("c").textContent = e.target.value.length; });
+$("xid").addEventListener("blur", e => { e.target.value = normalizeId(e.target.value); });
+
+const today = new Date();
+$("date").min = ymd(today);
+const max = new Date(today); max.setMonth(max.getMonth() + 18);
+$("date").max = ymd(max);
 
 function show(kind, text){ msg.className = "msg " + kind; msg.textContent = text; }
 
@@ -279,17 +393,27 @@ $("f").addEventListener("submit", async e => {
   e.preventDefault();
   msg.className = "msg";
 
-  const name  = $("name").value.trim();
-  const xid   = normalizeId($("xid").value);
-  const date  = $("date").value;
-  const r1 = readTime("t1sel","t1free"), r2 = readTime("t2sel","t2free");
-  if (!r1.ok || !r2.ok) return show("err", "時間は 19:45 のような形で入れてください");
-  const t1 = r1.value, t2 = r2.value;
-  const intro = $("intro").value.trim(), agency = $("agency").value.trim();
+  const kind   = currentKind();
+  const name   = $("name").value.trim();
+  const xid    = normalizeId($("xid").value);
+  const date   = $("date").value;
+  const intro  = $("intro").value.trim();
+  const agency = $("agency").value.trim();
+  const evname = readEventName();
 
   if (name.length < 2) return show("err", "お名前は2文字以上でお願いします");
-  if (!/^[A-Za-z0-9_]{1,15}$/.test(xid)) return show("err", "Xのアカウントが読み取れませんでした。@のあとの英数字（例 kotsumeit）を入れてみてください");
-  if (!date) return show("err", "初配信の日を入れてください");
+  if (!/^[A-Za-z0-9_]{1,15}$/.test(xid))
+    return show("err", "Xのアカウントが読み取れませんでした。@のあとの英数字（例 kotsumeit）を入れてみてください");
+
+  let t1 = null, t2 = null;
+  if (!date) return show("err", kind === "初配信" ? "初配信の日を入れてください" : "イベントの日を入れてください");
+  if (kind === "初配信") {
+    const r1 = readTime("t1sel","t1free"), r2 = readTime("t2sel","t2free");
+    if (!r1.ok || !r2.ok) return show("err", "時間は 19:45 のような形で入れてください");
+    t1 = r1.value; t2 = r2.value;
+  } else {
+    if (evname.length < 2) return show("err", "イベントを選んでください");
+  }
 
   btn.disabled = true; btn.textContent = "おくっています…";
 
@@ -303,11 +427,14 @@ $("f").addEventListener("submit", async e => {
         "Prefer": "return=minimal"
       },
       body: JSON.stringify({
+        kind: kind,
         display_name: name,
         x_id: "@" + xid,
-        debut_date: date,
-        start_time1: t1,
-        start_time2: t2,
+        debut_date:  kind === "初配信" ? date : null,
+        start_time1: kind === "初配信" ? t1 : null,
+        start_time2: kind === "初配信" ? t2 : null,
+        event_name:  kind === "イベント" ? evname : null,
+        event_start: kind === "イベント" ? tuesdayOf(date) : null,
         intro: intro || null,
         agency: agency || null
       })
@@ -325,6 +452,12 @@ $("f").addEventListener("submit", async e => {
       show("err", "本日の送信回数の上限です。まだ直したいところがあれば @kotsumeit までお願いします");
     } else if (body.indexOf("使用できない語") >= 0) {
       show("err", "使えない言葉が入っているみたいです。書き直してもらえますか");
+    } else if (body.indexOf("イベント名") >= 0) {
+      show("err", "イベントを選んでください");
+    } else if (body.indexOf("どの週") >= 0 || body.indexOf("火曜はじまり") >= 0) {
+      show("err", "どの週かを選んでください");
+    } else if (body.indexOf("過ぎた週") >= 0) {
+      show("err", "その週はもう終わっています");
     } else if (body.indexOf("過去") >= 0) {
       show("err", "初配信の日が過去になっています");
     } else if (body.indexOf("先すぎ") >= 0) {
